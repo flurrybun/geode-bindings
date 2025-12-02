@@ -16488,8 +16488,8 @@ class GJEffectManager : cocos2d::CCNode {
             position.x = calc.m_offset.x * cosf(angle) - calc.m_offset.y * sinf(angle);
             position.y = calc.m_offset.x * sinf(angle) + calc.m_offset.y * cosf(angle);
             auto diff = position - calc.m_offset;
-            calc.m_moveNode->m_unk038 += diff.x;
-            calc.m_moveNode->m_unk040 += diff.y;
+            calc.m_moveNode->m_moveDeltaX += diff.x;
+            calc.m_moveNode->m_moveDeltaY += diff.y;
             calc.m_moveNode->m_unk090 += diff.x;
             calc.m_moveNode->m_unk098 += diff.y;
             calc.m_moveNode->m_unk0d1 = false;
