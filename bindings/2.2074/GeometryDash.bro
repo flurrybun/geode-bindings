@@ -2565,19 +2565,19 @@ class CCMenuItemToggler : cocos2d::CCMenuItem {
 class CCMoveCNode : cocos2d::CCObject {
     // virtual ~CCMoveCNode();
     CCMoveCNode() {
-        m_unk038 = 0.0;
-        m_unk040 = 0.0;
+        m_moveDeltaX = 0.0;
+        m_moveDeltaY = 0.0;
         m_unk048 = 0.0;
         m_unk058 = 0.0;
         m_unk060 = 0.0;
         m_unk068 = 0.0;
         m_unk070 = false;
         m_unk071 = false;
-        m_unk074 = 0;
+        m_parentGroupID = 0;
         m_unk078 = false;
         m_unk07c = 0;
-        m_unk080 = 1.0;
-        m_unk088 = 1.0;
+        m_followXMod = 1.0;
+        m_followYMod = 1.0;
         m_unk090 = 0.0;
         m_unk098 = 0.0;
         m_unk0a0 = 0.0;
@@ -2602,19 +2602,19 @@ class CCMoveCNode : cocos2d::CCObject {
 
     bool init() = win inline, m1 0x27ac64, imac 0x2dae70, ios inline { return true; }
     void reset() = win inline,m1 0x27ac6c, imac 0x2dae80, ios inline {
-        m_unk038 = 0.0;
-        m_unk040 = 0.0;
+        m_moveDeltaX = 0.0;
+        m_moveDeltaY = 0.0;
         m_unk048 = 0.0;
         m_unk058 = 0.0;
         m_unk060 = 0.0;
         m_unk068 = 0.0;
         m_unk070 = false;
         m_unk071 = false;
-        m_unk074 = 0;
+        m_parentGroupID = 0;
         m_unk078 = false;
         m_unk07c = 0;
-        m_unk080 = 1.0;
-        m_unk088 = 1.0;
+        m_followXMod = 1.0;
+        m_followYMod = 1.0;
         m_unk090 = 0.0;
         m_unk098 = 0.0;
         m_unk0a0 = 0.0;
@@ -2628,8 +2628,8 @@ class CCMoveCNode : cocos2d::CCObject {
         this->setObjType((cocos2d::CCObjectType)0);
     }
 
-    double m_unk038;
-    double m_unk040;
+    double m_moveDeltaX;
+    double m_moveDeltaY;
     double m_unk048;
     void* m_unk050;
     double m_unk058;
@@ -2637,11 +2637,11 @@ class CCMoveCNode : cocos2d::CCObject {
     double m_unk068;
     bool m_unk070;
     bool m_unk071;
-    int m_unk074;
+    int m_parentGroupID;
     bool m_unk078;
     int m_unk07c;
-    double m_unk080;
-    double m_unk088;
+    double m_followXMod;
+    double m_followYMod;
     double m_unk090;
     double m_unk098;
     double m_unk0a0;
@@ -16288,7 +16288,7 @@ class GJEffectManager : cocos2d::CCNode {
     }
     void addMoveCalculation(CCMoveCNode* node, cocos2d::CCPoint offset, GameObject* object) = win inline, m1 0x275470, imac 0x2d3f50, ios 0x17fc4 {
         node->m_unk0d1 = true;
-        m_unkVector708.push_back({
+        m_moveCalculations.push_back({
             .m_moveNode = node,
             .m_offset = offset,
             .m_gameObject = object
@@ -16482,7 +16482,7 @@ class GJEffectManager : cocos2d::CCNode {
     void processCopyColorPulseActions() = win 0x25a180, m1 0x26dc58, imac 0x2cabf0, ios 0x13098;
     void processInheritedColors() = ios 0x12eb4, m1 0x26d980, imac 0x2ca840, win 0x254190;
     void processMoveCalculations() = win inline, m1 0x2759b0, imac 0x2d45a0, ios 0x182f4 {
-        for (auto& calc : m_unkVector708) {
+        for (auto& calc : m_moveCalculations) {
             auto angle = -calc.m_gameObject->m_rotationXOffset * M_PI / 180.f;
             cocos2d::CCPoint position;
             position.x = calc.m_offset.x * cosf(angle) - calc.m_offset.y * sinf(angle);
@@ -16494,7 +16494,7 @@ class GJEffectManager : cocos2d::CCNode {
             calc.m_moveNode->m_unk098 += diff.y;
             calc.m_moveNode->m_unk0d1 = false;
         }
-        m_unkVector708.clear();
+        m_moveCalculations.clear();
     }
     void processPulseActions() = win inline, m1 0x26d8bc, imac 0x2ca770, ios 0x12df8 {
         for (int i = 0; i < m_pulseEffectVector.size(); i++) {
@@ -16722,7 +16722,7 @@ class GJEffectManager : cocos2d::CCNode {
     gd::vector<CCMoveCNode*> m_unkVector6c0;
     gd::vector<CCMoveCNode*> m_unkVector6d8;
     gd::vector<CCMoveCNode*> m_unkVector6f0;
-    gd::vector<DynamicMoveCalculation> m_unkVector708;
+    gd::vector<DynamicMoveCalculation> m_moveCalculations;
     gd::map<std::pair<int, int>, gd::vector<GroupCommandObject2*>> m_unkMap770;
     float m_unk780;
     float m_unk784;
