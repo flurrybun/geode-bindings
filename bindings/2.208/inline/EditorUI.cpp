@@ -503,10 +503,10 @@ GameObject* EditorUI::getCycledObject(cocos2d::CCArray* objects, bool dontSkipSe
     GameObject* cycledObject = nullptr;
     for (int i = 0; i < objects->count(); i++) {
         auto obj = static_cast<GameObject*>(objects->objectAtIndex(i));
-        if ((!dontSkipSelected && obj->m_isSelected) || (cycledObject && cycledObject->m_unk460 <= obj->m_unk460 )) break;
+        if ((!dontSkipSelected && obj->m_isSelected) || (cycledObject && cycledObject->m_cycleIndex <= obj->m_cycleIndex )) break;
         if (this->canSelectObject(obj)) cycledObject = obj;
     }
-    if (cycledObject) cycledObject->m_unk460 = m_cycledObjectIndex;
+    if (cycledObject) cycledObject->m_cycleIndex = m_cycledObjectIndex;
     return cycledObject;
 }
 

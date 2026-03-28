@@ -6432,7 +6432,7 @@ class GameObject : CCSpritePlus {
     bool m_shouldBlendBase;
     bool m_shouldBlendDetail;
     bool m_hasCustomChild;
-    bool m_unk367;
+    bool m_hasAnimatedChild;
     cocos2d::CCSprite* m_colorSprite;
     bool m_unk370;
     float m_objectRadius;
@@ -6529,7 +6529,7 @@ class GameObject : CCSpritePlus {
     int m_zOrder;
     bool m_wasSelected;
     bool m_isSelected;
-    float m_unk460;
+    int m_cycleIndex;
     cocos2d::CCPoint m_unk464;
     bool m_updateParents;
     bool m_updateEditorColor;
@@ -6579,7 +6579,8 @@ class GameObject : CCSpritePlus {
     ColorActionSprite* m_mainActionSprite;
     ColorActionSprite* m_detailActionSprite;
     GJEffectManager* m_goEffectManager;
-    bool m_unk4F8;
+    // true for some 2.1 rock objects & animated fireball
+    bool m_useTextureRectAsSelectHitbox;
     bool m_isDecoration;
     bool m_isDecoration2;
     bool m_unk4fb;
