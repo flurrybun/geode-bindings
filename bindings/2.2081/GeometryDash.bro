@@ -6556,11 +6556,11 @@ class GameObject : CCSpritePlus {
     // property 61
     short m_editorLayer2;
     int m_enabledGroupsCounter;
-    bool m_updateCustomContentSize;
-    bool m_hasContentSize;
+    bool m_useObjectRect;
+    bool m_hasCustomSize;
     // property 121
     bool m_isNoTouch;
-    cocos2d::CCSize m_lastSize;
+    cocos2d::CCSize m_customSize;
     cocos2d::CCPoint m_lastPosition;
     int m_unk4C0;
     int m_unk4C4;
@@ -6580,7 +6580,7 @@ class GameObject : CCSpritePlus {
     ColorActionSprite* m_detailActionSprite;
     GJEffectManager* m_goEffectManager;
     // true for some 2.1 rock objects & animated fireball
-    bool m_useTextureRectAsSelectHitbox;
+    bool m_useTextureRectForSelection;
     bool m_isDecoration;
     bool m_isDecoration2;
     bool m_unk4fb;

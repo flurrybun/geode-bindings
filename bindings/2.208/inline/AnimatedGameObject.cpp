@@ -34,10 +34,10 @@ void AnimatedGameObject::setupAnimatedSize(int id) {
     auto height = 10.f;
     switch (id) {
         case 918:
-            m_hasContentSize = true;
+            m_hasCustomSize = true;
             m_objectRadius = 24.f;
-            m_lastSize.width = 80.f;
-            m_lastSize.height = 80.f;
+            m_customSize.width = 80.f;
+            m_customSize.height = 80.f;
             width = 48.f;
             height = 48.f;
             break;
@@ -46,31 +46,31 @@ void AnimatedGameObject::setupAnimatedSize(int id) {
             height = 6.f;
             break;
         case 1327:
-            m_hasContentSize = true;
-            m_lastSize.width = 35.f;
-            m_lastSize.height = 30.f;
+            m_hasCustomSize = true;
+            m_customSize.width = 35.f;
+            m_customSize.height = 30.f;
             width = 8.f;
             height = 8.f;
             break;
         case 1328:
-            m_hasContentSize = true;
-            m_lastSize.width = 35.f;
-            m_lastSize.height = 40.f;
+            m_hasCustomSize = true;
+            m_customSize.width = 35.f;
+            m_customSize.height = 40.f;
             width = 8.f;
             height = 15.f;
             break;
         case 1584:
-            m_hasContentSize = true;
-            m_lastSize.width = 60.f;
-            m_lastSize.height = 80.f;
+            m_hasCustomSize = true;
+            m_customSize.width = 60.f;
+            m_customSize.height = 80.f;
             width = 8.f;
             height = 8.f;
             break;
         case 2012:
-            m_hasContentSize = true;
+            m_hasCustomSize = true;
             m_objectRadius = 15.f;
-            m_lastSize.width = 45.f;
-            m_lastSize.height = 45.f;
+            m_customSize.width = 45.f;
+            m_customSize.height = 45.f;
             width = 8.f;
             height = 8.f;
             break;
